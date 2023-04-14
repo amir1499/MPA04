@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Markdown Preview App</title>
+    <style>
+      /* Style the textarea and preview panes */
+      #markdown, #preview {
+        width: 50%;
+        height: 300px;
+        border: 1px solid #ccc;
+        padding: 10px;
+        font-size: 16px;
+      }
+      
+      /* Style the preview pane */
+      #preview {
+        margin-top: 20px;
+        overflow-y: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Markdown Preview App</h1>
+    
+    <!-- Textarea pane for inputting Markdown text -->
+    <textarea id="markdown" placeholder="Enter Markdown text here..."></textarea>
+    
+    <!-- Preview pane for displaying formatted text -->
+    <div id="preview"></div>
+    
+    <!-- Include the Showdown library for converting Markdown to HTML -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/showdown/1.9.1/showdown.min.js"></script>
+    
+    <script>
+      // Get references to the Markdown and preview panes
+      const markdown = document.getElementById("markdown");
+      const preview = document.getElementById("preview");
+      
+      // Create a new Showdown converter
+      const converter = new showdown.Converter();
+      
+      // Update the preview pane whenever the Markdown text changes
+      markdown.addEventListener("input", function() {
+        // Convert the Markdown text to HTML
+        const html = converter.makeHtml(markdown.value);
+        
+        // Update the preview pane with the formatted HTML
+        preview.innerHTML = html;
+      });
+    </script>
+    <!--This code defines a simple webpage with two panes:
+         a textarea pane for inputting Markdown text, and 
+         a preview pane for displaying the formatted HTML output.
+          It also includes the Showdown library, which is used 
+          to convert Markdown to HTML.
+
+The JavaScript code creates a new Showdown converter and sets up
+ an event listener on the textarea pane that updates the preview
+  pane whenever the Markdown text changes. The event listener
+   first converts the Markdown text to HTML using the Showdown
+    converter, and then updates the HTML content of the
+     preview pane.-->
+  </body>
+</html>
